@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         ContactsRecViewAdapter adapter=new ContactsRecViewAdapter(this);
         adapter.setContactsArrayList(contactsArrayList);
         contactsRecView.setAdapter(adapter);
+
         //contactsRecView.setLayoutManager(new LinearLayoutManager(this));
         //contactsRecView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
 
@@ -68,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 contactsRecView.setVisibility(View.VISIBLE);
+                //System.out.println(contactsRecView.getChildAt(0).getId());
             }
         });
     }
