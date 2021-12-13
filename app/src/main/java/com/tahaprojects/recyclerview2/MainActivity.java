@@ -1,23 +1,38 @@
 package com.tahaprojects.recyclerview2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView contactsRecView;
+    //private Button btnFont;
+    private FloatingActionButton btnShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         contactsRecView=findViewById(R.id.recyclerView);
+        btnShow=findViewById(R.id.btnShow);
+        //btnFont=findViewById(R.id.btnFont);
+        contactsRecView.setLayoutManager(new GridLayoutManager(this,2));
+        Typeface typeface=getResources().getFont(R.font.amsterdam);
+        //Typeface typeface1= ResourcesCompat.getFont(this,R.font.amsterdam);
         ArrayList<Contacts> contactsArrayList=new ArrayList<>();
         contactsArrayList.add(new Contacts("Thanzila Ulfath","thanzila059@gmail.com","https://static.vecteezy.com/system/resources/previews/000/559/309/original/vector-cute-girl-wearing-santa-hat.jpg"));
         contactsArrayList.add(new Contacts("Thanzila Ulfat","thanzila059@gmail.com","https://static.vecteezy.com/system/resources/previews/000/549/264/original/vector-a-boy-scout-wearing-uniform.jpg"));
@@ -41,6 +56,20 @@ public class MainActivity extends AppCompatActivity {
         contactsRecView.setAdapter(adapter);
         //contactsRecView.setLayoutManager(new LinearLayoutManager(this));
         //contactsRecView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+
+/*        btnFont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //CardView cardView = findViewById(R.id.)
+                TextView textView=findViewById(R.id.txtName);
+                textView.setTypeface(typeface);
+        });*/
         contactsRecView.setLayoutManager(new GridLayoutManager(this,2));
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contactsRecView.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }

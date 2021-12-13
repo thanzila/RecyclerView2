@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">-->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -24,7 +27,7 @@
             android:layout_marginTop="7dp"
             android:text="Contact Name"
             android:textStyle="bold"
-            android:fontFamily="@font/amsterdam"
+            android:fontFamily="@font/lobster_two_italic"
             />
 
         <TextView
@@ -32,11 +35,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtName"
-            android:layout_marginTop="7dp"
             android:layout_marginStart="5dp"
-            android:fontFamily="@font/amsterdam"
-            android:textSize="10dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/lobster_two_regular"
             android:text="Contact Email"
+            android:textSize="10sp"
             android:textStyle="italic" />
 
         <ImageView
@@ -52,3 +55,19 @@
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
+<!--<RelativeLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@id/parent"
+    android:padding="10dp"
+    >
+
+    <Button
+        android:id="@+id/btnFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change font" />
+
+</RelativeLayout>-->
+<!--
+</RelativeLayout>-->

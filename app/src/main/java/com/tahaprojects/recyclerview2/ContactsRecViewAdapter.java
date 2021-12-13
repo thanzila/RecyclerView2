@@ -2,9 +2,11 @@ package com.tahaprojects.recyclerview2;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,6 +25,10 @@ public class ContactsRecViewAdapter extends RecyclerView.Adapter<ContactsRecView
 
     private ArrayList<Contacts> contactsArrayList=new ArrayList<>();
     private Context context;
+    private TextView txtName,txtEmail;
+    private ImageView imgContact;
+    private CardView parent;
+    Typeface typeFace;
 
     public ContactsRecViewAdapter(Context context) {
         this.context = context;
@@ -47,15 +53,24 @@ public class ContactsRecViewAdapter extends RecyclerView.Adapter<ContactsRecView
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        holder.txtName.setText(contactsArrayList.get(position).getName());
-        holder.txtEmail.setText(contactsArrayList.get(position).getEmail());
-        holder.parent.setOnClickListener(new View.OnClickListener() {
+        txtName.setText(contactsArrayList.get(position).getName());
+        txtEmail.setText(contactsArrayList.get(position).getEmail());
+/*        holder.btnFont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //holder.parent.setVisibility(View.GONE);
+                //holder.txtName.setTypeface();
+                holder.txtName.setTypeface(typeFace);
+            }
+        });*/
+        parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, contactsArrayList.get(position).getName()+" Clicked", Toast.LENGTH_SHORT).show();
             }
         });
-        Glide.with(context).asBitmap().load(contactsArrayList.get(position).getImgURL()).into(holder.imgContact);
+        Glide.with(context).asBitmap().load(contactsArrayList.get(position).getImgURL()).into(imgContact);
+
     }
 
     @Override
@@ -64,16 +79,20 @@ public class ContactsRecViewAdapter extends RecyclerView.Adapter<ContactsRecView
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView txtName,txtEmail;
-        private ImageView imgContact;
-        private CardView parent;
+
+        //private Button btnFont;
+
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            typeFace =itemView.getResources().getFont(R.font.amsterdam);
             txtName=itemView.findViewById(R.id.txtName);
             parent=itemView.findViewById(R.id.parent);
             txtEmail=itemView.findViewById(R.id.txtEmail);
             imgContact=itemView.findViewById(R.id.imgContact);
+            //btnFont=itemView.findViewById(R.id.btnFont);
+            //txtName.setTypeface(typeFace);
 
         }
     }
